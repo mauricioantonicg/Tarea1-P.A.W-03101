@@ -38,6 +38,8 @@ function guardarDatosFormularioEnjson(e) {
 
     e.preventDefault();
 
+    alert("inicio de guardar");
+
     var tipoIdentificacion = $(".ddl_tipoIdentificacion").val();
     var numIdentificacion = $(".txt_numIdentif").val();
     var nombre = $(".txt_nombre").val();
@@ -49,36 +51,38 @@ function guardarDatosFormularioEnjson(e) {
     var canton = $(".ddl_canton").val();
     var propuesta = $(".txt_Propuesta").val();
 
-    $.ajax({
+    alert("Antes de la variable");
+    alert(numIdentificacion);
 
+    $.ajax({
         url: "controladorArchivosJson.aspx",
         data: {
-            tipoIdentificacion: tipoIdentificacion,
-            numIdentificacion: numIdentificacion,
-            nombre: nombre,
-            apellido1: apellido1,
-            apellido2: apellido2,
-            numtelefono: numtelefono,
-            email: email,
-            provincia: provincia,
-            canton: canton,
-            propuesta: propuesta
+            tipoIdentificacio: tipoIdentificacion,
+            numIdentificacio: numIdentificacion,
+            nombr: nombre,
+            apellid1: apellido1,
+            apellid2: apellido2,
+            numtelefon: numtelefono,
+            emai: email,
+            provinci: provincia,
+            canto: canton,
+            propuest: propuesta
         },
         type: "post",
         success: function (data) {
-            /*if (data.substring(0, 10) === "registrado") {*/
+            if (data.substring(0, 10) === "registrado") {
                 alert("Registrado Correctamente");
                 location.href = "RegistradoCorrectamente.aspx";
-            //} else {
-            //    alert("No fue posible realizar el registro");
-            //}
+            } else {
+                alert("No fue posible realizar el registro");
+            }
         },
         error: function (data) {
             alert("Error"+data);
         }
     });
 
-    alert('Se detuvo el guardado por defecto');
+    alert('Fin de guardar');
 
 }
 
